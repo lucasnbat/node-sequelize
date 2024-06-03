@@ -3,3 +3,12 @@
     * nos scripts do packtage, coloca "dev":"nodemon src/index.js"
 * instalar o sequelize e o sequelize-cli: npm install sequelize sequelize-cli
 * instalar o mysql: npm install mysql2
+* sobre o banco de dados:
+    * instale o xampp;
+    * crie uma base de dados
+    * crie um usuário e senha para esse projeto/base de dados:
+        * CREATE USER 'user_user'@'%' IDENTIFIED BY '123456';
+        * GRANT ALL PRIVILEGES ON *.* TO 'user_user'@'%' WITH GRANT OPTION;
+        * FLUSH PRIVILEGES;
+        * EXIT;
+        ** obs: '%' indica que o user_user pode se conectar a partir de qualquer host
