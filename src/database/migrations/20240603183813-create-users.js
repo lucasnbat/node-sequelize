@@ -14,7 +14,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      setor: {
+      department: {
         type: Sequelize.STRING, //acho que vai precisar mudarz
         allowNull: false,
       },
