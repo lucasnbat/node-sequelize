@@ -1,0 +1,5 @@
+* instalar express
+* instalar nodemon
+    * nos scripts do packtage, coloca "dev":"nodemon src/index.js"
+* instalar o sequelize e o sequelize-cli: npm install sequelize sequelize-cli
+* instalar o mysql: npm install mysql2
