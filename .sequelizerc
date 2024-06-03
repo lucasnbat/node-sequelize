@@ -1,0 +1,12 @@
+// mais configs de caminho para execução de comandos no cli sequelize
+// configs para indicar caminhos de config do banco e das migrations
+
+// biblioteca para pegar caminhos
+const path = require('path');
+
+module.exports = {
+    //config do banco
+    config: path.resolve(__dirname, 'src', 'config', 'database.js'),
+    // caminhos das migrations
+    'migrations-path': path.resolve(__dirname, 'src', 'database', 'migrations'),
+}

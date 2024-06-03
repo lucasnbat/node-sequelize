@@ -12,3 +12,10 @@
         * FLUSH PRIVILEGES;
         * EXIT;
         ** obs: '%' indica que o user_user pode se conectar a partir de qualquer host
+
+COMANDOS SEQUELIZE cli
+
+* Criar database configurada: npx sequelize-cli db:create
+* Migrations: criação de database, tabelas...;
+* Criar uma migration: npx sequelize-cli migration:create --name=create-users
+* Rodar uma mgiration: npx sequelize-cli db:migrate
