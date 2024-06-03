@@ -15,7 +15,7 @@ module.exports = {
         allowNull: false,
       },
       setor: {
-        type: Sequelize.STRING, //acho que vai precisar mudar
+        type: Sequelize.STRING, //acho que vai precisar mudarz
         allowNull: false,
       },
       email: {
