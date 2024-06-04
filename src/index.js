@@ -5,6 +5,9 @@ const routes = require('./routes')
 
 const app = express();
 
+// chamando conexão com banco
+require('./database');
+
 // utilizarei json para comunicação com server
 app.use(express.json());
 

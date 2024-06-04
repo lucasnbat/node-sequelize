@@ -19,3 +19,10 @@ COMANDOS SEQUELIZE cli
 * Migrations: criação de database, tabelas...;
 * Criar uma migration: npx sequelize-cli migration:create --name=create-users
 * Rodar uma mgiration: npx sequelize-cli db:migrate
+
+O QUE FOI FEITO PARA FAZER UMA ROTA GET USERS?
+
+* Implementei metodo no controller;
+* Invoquei o metodo do controller no routes.js associando à rota;
+* Na base de dados (database/index.js) precisei iniciar uma conexão pro Model
+* Chamei conexão com banco no index.js da API;
