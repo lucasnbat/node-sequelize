@@ -1,4 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
+const bcrypt = require('bcryptjs');
 
 // usamos para nos comunicar com o banco de dados
 class Employee extends Model {
