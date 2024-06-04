@@ -34,5 +34,9 @@ class Employee extends Model {
             }
         })
     }
+
+    // static associate(models) {
+    //     this.hasMany(models.Ticket, { foreignKey: 'idEmployee' });
+    // }
 }
 module.exports = Employee;
