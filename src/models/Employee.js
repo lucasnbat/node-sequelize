@@ -25,6 +25,13 @@ class Employee extends Model {
             timestamps: true, // desativar timestamps automáticas })
             createdAt: 'created_at', // mapear para a coluna created_at
             updatedAt: 'updated_at', // mapear para a coluna updated_at
+            hooks: {
+                beforeCreate: (employee) => {
+                    const salt = bcrypt.genSaltSync(); //pega senha
+                    employee.password = bcrypt.hashSync(employee.password, salt); // gera o hash
+
+                }
+            }
         })
     }
 }
