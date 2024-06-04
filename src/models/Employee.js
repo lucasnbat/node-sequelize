@@ -15,6 +15,7 @@ class Employee extends Model {
             employee: DataTypes.STRING,
             department: DataTypes.STRING, // está "setor" lá no front
             email: DataTypes.STRING,
+            isLogged: DataTypes.BOOLEAN,
         }, {
             sequelize,
             modelName: 'Employee',
