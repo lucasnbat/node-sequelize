@@ -40,7 +40,7 @@ module.exports = {
     async update(req, res) {
         const { employee, department, email } = req.body;
 
-        const { id_employee } = req.params; //extrai o parametro
+        const { id_employee } = req.params; //extrai o parametro (o mesmo de lá da routes.js)
 
         await Employee.update(
             {
@@ -62,6 +62,17 @@ module.exports = {
     },
 
     async delete(req, res) {
+        const { id_employee } = req.params;
 
+        await Employee.destroy({
+            where: {
+                idEmployee: id_employee,
+            }
+        })
+
+        return res.status(200).send({
+            status: 1,
+            message: 'funcionário deletado com sucesso!',
+        })
     },
 }
