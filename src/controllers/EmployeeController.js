@@ -1,7 +1,16 @@
 // aqui vao os metodos de gravar, selecionar, update e delete
 const { where } = require('sequelize');
 const Employee = require('../models/Employee');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcryptjs'); //isso faz parte de encriptação e validação de senha
+const authConfig = require('../config/auth.json'); //isso é a secret para trabalharmos com autenticação de sessão por token 
+const jwt = require('jsonwebtoken');
+
+// gerando o token de sessão
+function generateToken(params = {}) {
+    return jwt.sign(params, authConfig.secret, {
+        expiresIn: 78300,
+    })
+}
 
 module.exports = {
     async login(req, res) {
@@ -12,15 +21,17 @@ module.exports = {
         if (!employee) {
             return res.status(400).send({
                 status: 0,
-                message: 'e-mail ou senha incorreto!'
+                message: 'e-mail ou senha incorreto!',
+                employee: {}
             })
         }
 
         // compara a senha vinda do bod com a senha do banco (employee.password)
-        if(!bcrypt.compareSync(password, employee.password)){
+        if (!bcrypt.compareSync(password, employee.password)) {
             return res.status(400).send({
                 status: 0,
-                message: 'e-mail ou senha incorreto!'
+                message: 'e-mail ou senha incorreto!',
+                user: {},
             })
         }
 
@@ -38,10 +49,14 @@ module.exports = {
         // deixa como undefined para não msotrar senha
         employee.password = undefined;
 
+        // id passado para gerar o token. deixei ele apenas como "id"
+        const token = generateToken({ id: employee.idEmployee })
+
         return res.status(200).send({
             status: 1,
             message: 'funcionário logado com sucesso',
             employee,
+            token,
         })
     },
 
@@ -73,10 +88,13 @@ module.exports = {
             password,
         })
 
+        const token = generateToken({ id: employee.idEmployee })
+
         return res.status(200).send({
             status: 1,
             message: 'funcionário cadastrado com sucesso!',
-            employeeConst
+            employeeConst,
+            token,
         })
     },
 

@@ -26,3 +26,9 @@ O QUE FOI FEITO PARA FAZER UMA ROTA GET USERS?
 * Invoquei o metodo do controller no routes.js associando à rota;
 * Na base de dados (database/index.js) precisei iniciar uma conexão pro Model
 * Chamei conexão com banco no index.js da API;
+
+PARA ENCRIPTAR SENHAS
+
+* npm install bcryptjs
+* npm install jsonwebtoken
+* o auth é tipo uma chave secreta que só a aplicação tem
