@@ -15,6 +15,7 @@ class Employee extends Model {
             employee: DataTypes.STRING,
             department: DataTypes.STRING, // está "setor" lá no front
             email: DataTypes.STRING,
+            password: DataTypes.STRING, //adicionada no módulo de jwt
             isLogged: DataTypes.BOOLEAN,
         }, {
             sequelize,

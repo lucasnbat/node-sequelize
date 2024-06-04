@@ -4,6 +4,10 @@ const { where } = require('sequelize');
 const Employee = require('../models/Employee');
 
 module.exports = {
+    async login(req, res) {
+       
+    },
+
     async index(req, res) {
         const employees = await Employee.findAll({
             attributes: [
@@ -11,6 +15,7 @@ module.exports = {
                 'employee',
                 'department',
                 'email',
+                'password',
             ],
         });
 
@@ -22,12 +27,13 @@ module.exports = {
     },
 
     async store(req, res) {
-        const { employee, department, email } = req.body;
+        const { employee, department, email, password } = req.body;
 
         const employeeConst = await Employee.create({
             employee,
             department,
-            email
+            email,
+            password,
         })
 
         return res.status(200).send({
@@ -38,7 +44,7 @@ module.exports = {
     },
 
     async update(req, res) {
-        const { employee, department, email } = req.body;
+        const { employee, department, email, password } = req.body;
 
         const { id_employee } = req.params; //extrai o parametro (o mesmo de lá da routes.js)
 
@@ -47,6 +53,7 @@ module.exports = {
                 employee,
                 department,
                 email,
+                password,
             },
             {
                 where: {
