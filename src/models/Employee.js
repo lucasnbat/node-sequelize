@@ -22,7 +22,7 @@ class Employee extends Model {
             sequelize,
             modelName: 'Employee',
             tableName: 'Employees',
-            timestamps: true, // desativar timestamps automáticas })
+            timestamps: true, 
             createdAt: 'created_at', // mapear para a coluna created_at
             updatedAt: 'updated_at', // mapear para a coluna updated_at
             hooks: {

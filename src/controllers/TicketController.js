@@ -40,6 +40,12 @@ module.exports = {
                 status,
                 id_employee,
             })
+
+            return res.status(200).json({
+                status: 1,
+                message: 'Ticket criado com sucesso!',
+                ticket
+            })
         } catch (err) {
             return res.status(400).json({ error: err })
         }

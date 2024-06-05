@@ -4,6 +4,7 @@ const Employee = require('../models/Employee');
 const bcrypt = require('bcryptjs'); //isso faz parte de encriptação e validação de senha
 const authConfig = require('../config/auth.json'); //isso é a secret para trabalharmos com autenticação de sessão por token 
 const jwt = require('jsonwebtoken');
+const Ticket = require('../models/Ticket');
 
 // gerando o token de sessão
 function generateToken(params = {}) {
@@ -69,6 +70,15 @@ module.exports = {
                 'email',
                 'password',
             ],
+            order: [
+                ['idEmployee', 'DESC'], // Order by employee name in ascending order
+                [{ model: Ticket, as: 'tickets' }, 'created_at', 'DESC'] // Order tickets by creation date in descending order
+            ],
+            include: {
+                model: Ticket,
+                as: 'tickets',
+                attributes: ['idTicket', 'obs', 'status', 'created_at'],
+            },
         });
 
         if (employees == '' || employees == null) {
