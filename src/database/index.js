@@ -5,15 +5,19 @@ const Sequelize = require('sequelize');
 const dbConfig = require('../config/database') 
 
 // epga o modal User
-const User = require('../models/Employee');
+const Employee = require('../models/Employee');
 const Ticket = require('../models/Ticket');
+
+// associa os models para fazer o relacionamento
+Employee.associate(connection.models);
+Ticket.associate(connection.models);
 
 // cria conexão invocando a instancia de sequelize criada
 // utilizando as config definidas
 const connection = new Sequelize(dbConfig);
 
 // precisa para conectar no banco
-User.init(connection);
+Employee.init(connection);
 Ticket.init(connection);
 
 // exporta a connexão
