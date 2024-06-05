@@ -77,7 +77,7 @@ module.exports = {
             include: {
                 model: Ticket,
                 as: 'tickets',
-                attributes: ['idTicket', 'obs', 'status', 'created_at'],
+                attributes: ['idTicket', 'obs', 'status','month', 'created_at'],
             },
         });
 

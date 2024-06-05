@@ -37,7 +37,7 @@ module.exports = {
     async store(req, res) {
         try {
             const { id_employee } = req.params;
-            const { obs, status } = req.body;
+            const { obs, status, month } = req.body;
 
             const employee = await Employee.findByPk(id_employee)
 
@@ -52,6 +52,7 @@ module.exports = {
                 obs,
                 status,
                 id_employee,
+                month
             })
 
             return res.status(200).json({
@@ -86,7 +87,7 @@ module.exports = {
     // criado por copilot 
     async update(req, res) {
         const { id_ticket } = req.params;
-        const { obs, status } = req.body;
+        const { obs, status, month } = req.body;
 
         try {
             await Ticket.update({ obs, status }, { where: { idTicket: id_ticket } })

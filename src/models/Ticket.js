@@ -10,6 +10,7 @@ class Ticket extends Model {
             },
             obs: DataTypes.STRING,
             status: DataTypes.BOOLEAN,
+            month: DataTypes.INTEGER,
         }, {
             sequelize,
             modelName: 'Ticket',
