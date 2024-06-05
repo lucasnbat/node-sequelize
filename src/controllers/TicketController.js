@@ -78,7 +78,7 @@ module.exports = {
         } catch (error) {
             return res.status(400).json({
                 status: 0,
-                message: 'ticket não encontrado!'
+                message: 'erro ao deletar ticket!'
             })
         }
     },
@@ -99,7 +99,7 @@ module.exports = {
         } catch (error) {
             return res.status(400).json({
                 status: 0,
-                message: 'ticket não encontrado!'
+                message: 'erro ao atualizar ticket!'
             })
         }
     }
