@@ -5,7 +5,8 @@ const Sequelize = require('sequelize');
 const dbConfig = require('../config/database') 
 
 // epga o modal User
-const User = require('../models/Employee')
+const User = require('../models/Employee');
+const Ticket = require('../models/Ticket');
 
 // cria conexão invocando a instancia de sequelize criada
 // utilizando as config definidas
@@ -13,13 +14,7 @@ const connection = new Sequelize(dbConfig);
 
 // precisa para conectar no banco
 User.init(connection);
-
-// try {
-//     connection.authenticate();
-//     console.log('Conexão estabelecida');
-// } catch(error){
-//     console.error('Impossível conectar à base de dados', error);
-// }
+Ticket.init(connection);
 
 // exporta a connexão
 module.exports = connection;
