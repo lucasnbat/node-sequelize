@@ -39,6 +39,7 @@ module.exports = {
         // puxando idEmployee do banco e jogando pra variavel
         const id_employee = employee.idEmployee;
 
+        // faz update no isLogged pra mostrar que tá logado
         await Employee.update({
             isLogged
         }, {
