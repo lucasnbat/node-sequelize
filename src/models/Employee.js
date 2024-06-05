@@ -14,7 +14,6 @@ class Employee extends Model {
             // não precisa de id, created e updated aqui
             // você não passa eles ao inserir
             employee: DataTypes.STRING,
-            department: DataTypes.STRING, // está "setor" lá no front
             email: DataTypes.STRING,
             password: DataTypes.STRING, //adicionada no módulo de jwt
             isLogged: DataTypes.BOOLEAN,

@@ -14,10 +14,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      department: {
-        type: Sequelize.STRING, //acho que vai precisar mudarz
-        allowNull: false,
-      },
+      // department: {
+      //   type: Sequelize.STRING, //acho que vai precisar mudarz
+      //   allowNull: false,
+      // },
       email: {
         type: Sequelize.STRING,
         allowNull: false,

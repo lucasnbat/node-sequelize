@@ -2,6 +2,19 @@ const Employee = require('../models/Employee');
 const Ticket = require('../models/Ticket');
 
 module.exports = {
+    async indexAll(req, res) {
+        const tickets = await Ticket.findAll();
+
+        if (!tickets) {
+            return res.status(400).send({
+                status: 0,
+                message: 'nenhum ticket encontrado'
+            })
+        }
+
+        return res.status(200).send(tickets)
+    },
+
     async index(req, res) {
         const { id_employee } = req.params;
 
@@ -53,24 +66,15 @@ module.exports = {
 
     async delete(req, res) {
         // id = id do ticket
-        const id = req.params.id;
+        const { id_ticket } = req.params;
 
         try {
-            const ticket = await Ticket.findByPk(id);
+            await Ticket.destroy({ where: { idTicket: id_ticket } })
 
-            if (ticket) {
-                await Ticket.destroy({ where: { id } })
-
-                return res.status(200).json({
-                    status: 1,
-                    message: 'Ticket apagado com sucesso!'
-                })
-            } else {
-                return res.status(400).json({
-                    status: 0,
-                    message: 'ticket não encontrado!'
-                })
-            }
+            return res.status(200).json({
+                status: 1,
+                message: 'Ticket apagado com sucesso!'
+            })
         } catch (error) {
             return res.status(400).json({
                 status: 0,
@@ -80,26 +84,18 @@ module.exports = {
     },
 
     // criado por copilot 
-    async update(req, res){
-        const { id } = req.params;
+    async update(req, res) {
+        const { id_ticket } = req.params;
         const { obs, status } = req.body;
 
         try {
-            const ticket = await Ticket.findByPk(id);
+            await Ticket.update({ obs, status }, { where: { idTicket: id_ticket } })
 
-            if (ticket) {
-                await Ticket.update({ obs, status }, { where: { id } })
+            return res.status(200).json({
+                status: 1,
+                message: 'Ticket atualizado com sucesso!'
+            })
 
-                return res.status(200).json({
-                    status: 1,
-                    message: 'Ticket atualizado com sucesso!'
-                })
-            } else {
-                return res.status(400).json({
-                    status: 0,
-                    message: 'ticket não encontrado!'
-                })
-            }
         } catch (error) {
             return res.status(400).json({
                 status: 0,

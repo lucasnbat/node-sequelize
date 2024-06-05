@@ -27,10 +27,11 @@ router.post('/employees/login', EmployeeController.login);
 //router.use(authMiddleware);
 
 // ticket
-router.get('/employees/:id_employee/tickets', TicketController.index);
-router.post('/employees/:id_employee/tickets', TicketController.store);
-router.put('/employees/:id/tickets', TicketController.update); //estrnaho ter usado id e não id_employee...naõ seguiu padrão
-router.delete('/employees/:id/tickets', TicketController.delete);
+router.get('/tickets/:id_employee', TicketController.index);
+router.get('/tickets', TicketController.indexAll);
+router.post('/tickets/:id_employee', TicketController.store);
+router.put('/tickets/:id_ticket', TicketController.update); //estrnaho ter usado id e não id_employee...naõ seguiu padrão
+router.delete('/tickets/:id_ticket', TicketController.delete);
 
 // department
 

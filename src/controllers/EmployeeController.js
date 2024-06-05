@@ -66,7 +66,7 @@ module.exports = {
             attributes: [
                 'idEmployee',
                 'employee',
-                'department',
+                'id_department',
                 'email',
                 'password',
             ],
@@ -89,13 +89,13 @@ module.exports = {
     },
 
     async store(req, res) {
-        const { employee, department, email, password } = req.body;
+        const { employee, email, password, id_department } = req.body;
 
         const employeeConst = await Employee.create({
             employee,
-            department,
             email,
             password,
+            id_department,
         })
 
         const token = generateToken({ id: employee.idEmployee })
@@ -109,16 +109,16 @@ module.exports = {
     },
 
     async update(req, res) {
-        const { employee, department, email, password } = req.body;
+        const { employee, email, password, id_department } = req.body;
 
         const { id_employee } = req.params; //extrai o parametro (o mesmo de lá da routes.js)
 
         await Employee.update(
             {
                 employee,
-                department,
                 email,
                 password,
+                id_department
             },
             {
                 where: {
