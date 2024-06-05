@@ -8,10 +8,6 @@ const dbConfig = require('../config/database')
 const Employee = require('../models/Employee');
 const Ticket = require('../models/Ticket');
 
-// associa os models para fazer o relacionamento
-Employee.associate(connection.models);
-Ticket.associate(connection.models);
-
 // cria conexão invocando a instancia de sequelize criada
 // utilizando as config definidas
 const connection = new Sequelize(dbConfig);
@@ -19,6 +15,11 @@ const connection = new Sequelize(dbConfig);
 // precisa para conectar no banco
 Employee.init(connection);
 Ticket.init(connection);
+
+// associa os models para fazer o relacionamento
+Employee.associate(connection.models);
+Ticket.associate(connection.models);
+
 
 // exporta a connexão
 module.exports = connection;
