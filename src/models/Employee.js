@@ -37,6 +37,8 @@ class Employee extends Model {
 
     static associate(models) {
         this.hasMany(models.Ticket, { foreignKey: 'id_employee', as: 'tickets'  });
+        this.belongsTo(models.Department, { foreignKey: 'id_department', as: 'dept' }); //mudando para evitar colisão de nomes
     }
+
 }
 module.exports = Employee;
