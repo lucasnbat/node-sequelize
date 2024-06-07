@@ -38,7 +38,7 @@ module.exports = {
 
         // faz update no isLogged pra mostrar que tá logado
         await User.update({
-            isLogged
+            isLogged: true
         }, {
             where: {
                 idUser: id_user,
