@@ -11,6 +11,7 @@ const EmployeeController = require('./controllers/EmployeeController');
 const TicketController = require('./controllers/TicketController');
 const DepartmentController = require('./controllers/DepartmentController');
 const UserController = require('./controllers/UserController');
+const PdfController = require('./controllers/PdfController');
 
 const authMiddleware = require('./middlewares/auth');
 
@@ -47,6 +48,11 @@ router.delete('/departments/:id_department', authMiddleware, DepartmentControlle
 router.post('/users', UserController.store);
 router.put('/users/:id_user', authMiddleware, UserController.update);
 router.delete('/users/:id_user', authMiddleware, authMiddleware,UserController.delete);
+
+//pdfs
+
+router.post('/pdfs/:id_ticket', authMiddleware, PdfController.store);
+router.get('/pdfs/:id_ticket', authMiddleware, PdfController.show);
 
 // exportando minha var router
 module.exports = router;

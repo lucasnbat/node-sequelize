@@ -26,6 +26,10 @@ class Ticket extends Model {
         this.belongsTo(models.Employee, {
             foreignKey: 'id_employee', //nome da foreign key - usei o mesmo case dos params de url
             as: 'employee' 
+        }),
+        this.hasOne(models.Pdf, {
+            foreignKey: 'id_ticket',
+            as: 'pdf'
         })
     }
 }
