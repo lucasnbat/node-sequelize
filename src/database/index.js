@@ -8,6 +8,7 @@ const dbConfig = require('../config/database')
 const Employee = require('../models/Employee');
 const Ticket = require('../models/Ticket');
 const Department = require('../models/Department');
+const User = require('../models/User');
 
 // cria conexão invocando a instancia de sequelize criada
 // utilizando as config definidas
@@ -17,6 +18,7 @@ const connection = new Sequelize(dbConfig);
 Employee.init(connection);
 Ticket.init(connection);
 Department.init(connection);
+User.init(connection);
 
 // associa os models para fazer o relacionamento
 Employee.associate(connection.models);
