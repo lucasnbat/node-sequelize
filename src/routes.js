@@ -10,6 +10,7 @@ const express = require('express');
 const EmployeeController = require('./controllers/EmployeeController');
 const TicketController = require('./controllers/TicketController');
 const DepartmentController = require('./controllers/DepartmentController');
+const UserController = require('./controllers/UserController');
 
 // const authMiddleware = require('./middlewares/auth');
 
@@ -39,6 +40,12 @@ router.get('/departments', DepartmentController.index);
 router.post('/departments', DepartmentController.store);
 router.put('/departments/:id_department', DepartmentController.update);
 router.delete('/departments/:id_department', DepartmentController.delete);
+
+// users
+
+router.post('/users', UserController.store);
+router.put('/users/:id_user', UserController.update);
+router.delete('/users/:id_user', UserController.delete);
 
 // exportando minha var router
 module.exports = router;

@@ -1,4 +1,7 @@
 const User = require('../models/User');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs'); //isso faz parte de encriptação e validação de senha
+const authConfig = require('../config/auth.json'); //isso é a secret para trabalharmos com autenticação de sessão por token 
 
 // gerando o token de sessão
 function generateToken(params = {}) {
@@ -94,7 +97,6 @@ module.exports = {
         return res.status(200).send({
             status: 1,
             message: 'usuário atualizado com sucesso',
-            userConst,
         })
     },
 
