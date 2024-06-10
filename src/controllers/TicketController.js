@@ -8,7 +8,7 @@ module.exports = {
             include: {
                 model: Pdf,
                 as: 'pdf',
-                attributes: ['originalname', 'filename', 'url'],
+                attributes: ['originalname', 'filename', 'url', 'id'],
             },
         });
 
