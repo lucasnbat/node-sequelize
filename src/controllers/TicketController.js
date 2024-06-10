@@ -1,9 +1,16 @@
 const Employee = require('../models/Employee');
+const Pdf = require('../models/Pdf');
 const Ticket = require('../models/Ticket');
 
 module.exports = {
     async indexAll(req, res) {
-        const tickets = await Ticket.findAll();
+        const tickets = await Ticket.findAll({
+            include: {
+                model: Pdf,
+                as: 'pdf',
+                attributes: ['originalname', 'filename', 'url'],
+            },
+        });
 
         if (!tickets) {
             return res.status(400).send({
@@ -20,8 +27,8 @@ module.exports = {
 
         const employee = await Employee.findByPk(id_employee, {
             include: {
-                association: 'tickets' //qual tabela está associada? tickets
-            }
+                association: 'tickets', //qual tabela está associada? tickets
+            },
         });
 
         if (!employee) {
