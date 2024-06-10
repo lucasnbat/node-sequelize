@@ -36,8 +36,9 @@ module.exports = {
 
                 return res.json(pdf);
             } catch (e) {
+                console.log(e);
                 return res.status(400).json({
-                    errors: ['Erro ao processar PDF'],
+                    errors: ['Erro ao criar PDF'],
                 });
             }
         });

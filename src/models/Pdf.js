@@ -1,6 +1,8 @@
 const { Model, DataTypes } = require('sequelize');
 // import appConfig from '../config/appConfig';
 
+const appConfig = require('../config/appConfig');
+
 class Pdf extends Model {
     static init(sequelize) {
         super.init({
@@ -31,6 +33,8 @@ class Pdf extends Model {
         }, {
             sequelize,
             tableName: 'pdfs',
+            createdAt: 'created_at', // mapear para a coluna created_at
+            updatedAt: 'updated_at', // mapear para a coluna updated_at
         });
         return this;
     }
